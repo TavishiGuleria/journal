@@ -4,7 +4,7 @@
 
 `24-04-2020`
 #### Data Analysis with Python and Pandas
-- Point uno dos tres
+- Een Twee Drie Vier
 
 ```
 This is how to write with code blocks
