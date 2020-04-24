@@ -3,7 +3,7 @@
 ---
 
 `24-04-2020`
-#### Data Analysis 
+#### Data Analysis with Python and Pandas 
 - Point 1
 
 ```
