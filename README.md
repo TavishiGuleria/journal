@@ -2,6 +2,42 @@
 
 ---
 
+`27-04-2020`
+### Data Analysis with Python and Pandas
+#### Jupyter notebook interface
+- Keyboard shortcuts at insert
+- To make it minimilistic - Toggle and remove numbers
+- Insert let's you insert etc. cells
+- Cell menu - various helper run options
+- Kernel - when notebook is not responsive - use to restart and run
+- Edit - to edit cell 
+
+#### Cell types and modes
+- Code dropdown options
+- Markdown! (formatting using symbols)
+- Edit mode 
+- Command mode (esc key - keyboard shortcuts y and m to edit the notebook)
+
+#### Keyboard shortcuts
+- Command mode using esc key - blue outline
+- H key - help for all shortcuts
+- B key - create cells below
+- A key - create cells above
+- DD key - delete's cell
+- X key - cut cell
+
+#### Import libraries to notebook
+- Pandas is an example of a solution built by developers to solve common problems. Such packages are also there for other applications
+- In the server we installed the libraries, doesn't mean that its available (to conserve memory) - so explicitly specify
+- import pandas as pd 
+- import numpy as np
+- Example pd.__version__
+
+#### Data types and variables
+- 
+
+---
+
 `24-04-2020`
 ### Data Analysis with Python and Pandas
 #### Starting up
@@ -34,34 +70,4 @@
 - Turn server off in cmd prompt window - ctrl c twice
 - Close cmd prompt
 
-#### Jupyter notebook interface
-- Keyboard shortcuts at insert
-- To make it minimilistic - Toggle and remove numbers
-- Insert let's you insert etc. cells
-- Cell menu - various helper run options
-- Kernel - when notebook is not responsive - use to restart and run
-- Edit - to edit cell 
 
-#### Cell types and modes
-- Code dropdown options
-- Markdown! (formatting using symbols)
-- Edit mode 
-- Command mode (esc key - keyboard shortcuts y and m to edit the notebook)
-
-#### Keyboard shortcuts
-- Command mode using esc key - blue outline
-- H key - help for all shortcuts
-- B key - create cells below
-- A key - create cells above
-- DD key - delete's cell
-- X key - cut cell
-
-#### Import libraries to notebook
-- Pandas is an example of a solution built by developers to solve common problems. Such packages are also there for other applications
-- In the server we installed the libraries, doesn't mean that its available (to conserve memory) - so explicitly specify
-- import pandas as pd 
-- import numpy as np
-- Example pd.__version__
-
-#### Data types and variables
-- 
