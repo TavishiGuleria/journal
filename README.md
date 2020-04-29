@@ -34,6 +34,15 @@
 -pd.read_csv("pokemon.csv") ~imports dataframes
 pd.read_csv("pokemon.csv", usecols = ["Pokemon"], squeeze = True)
 
+#### .head() and .tail() method
+-pokemon.head(number?) ~ makes copy and can store again
+
+#### Python built-in functions
+- len(xxx)
+- type(xxx)
+- dir(xxx) ~ gives attributes and methods
+- 
+
 ---
 
 #### Dictionary
