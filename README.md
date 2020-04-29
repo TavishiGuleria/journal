@@ -1,5 +1,61 @@
 # Journal
 
+--- 
+
+`29-04-2020`
+### Data Analysis with Python and Pandas
+#### Dictionary
+- xxx = {"key": yyy,
+          "Key2": yyy
+        }
+- extract xxx("key2")
+
+#### Operators
+- 1 == 1 (gives true/false)
+- 1 != 2 (gives true/false)
+- etc...
+
+#### Function
+- Reusable chunk of code
+- def convert_to_F(CTemp): 
+      product = CTemp * 1.8
+      final = product + 32
+      return = final 
+- To execute convert_to_F(xx)
+
+---
+
+#### Series
+- One D labelled array
+- pd.(tab???) this is dot notation
+- pd.Series(xxx) ~this gives the panda series
+- Object means string
+- webster = {"x" : "y",
+             "x" : "y"}
+
+  pd.Series(webster)
+
+#### Attributes
+- s = pandas.Series(x)
+- s.(tab??)
+- s.values (no brackets needed)
+- s.index
+- s.dtype
+
+#### Methods
+- Does something to the object
+- s.sum()
+
+#### Parameters and arguments
+- eg. Difficulty (parameter) = easy(argument), medium, hard
+- pd.Series(Shift + Tab??????)
+- pd.Series(data = xxx, index = yyy)
+
+#### Import series with .read_csv()
+-pd.read_csv()
+-pd.read_csv("pokemon.csv") ~imports dataframes
+pd.read_csv("pokemon.csv", usecols = ["Pokemon"], squeeze = True)
+
 ---
 
 `27-04-2020`
@@ -34,7 +90,17 @@
 - Example pd.__version__
 
 #### Data types and variables
-- 
+- comments (using '#')
+- integers, floating point, strings("xxx"), bollean (true/false)
+- type (xxx) gives the type
+- variable are place holders
+- '=' right side analysed first 
+
+#### Lists (array)
+- Data container that can store multiple values 
+- [x,x,x] (data types don't need to be consistant, but is prefered)
+- len (xxx) gives length of list
+- xxx[4] gives index valus. Index starts counting at 0, final is n-1
 
 ---
 
