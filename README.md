@@ -4,27 +4,6 @@
 
 `29-04-2020`
 ### Data Analysis with Python and Pandas
-#### Dictionary
-- xxx = {"key": yyy,
-          "Key2": yyy
-        }
-- extract xxx("key2")
-
-#### Operators
-- 1 == 1 (gives true/false)
-- 1 != 2 (gives true/false)
-- etc...
-
-#### Function
-- Reusable chunk of code
-- def convert_to_F(CTemp): 
-      product = CTemp * 1.8
-      final = product + 32
-      return = final 
-- To execute convert_to_F(xx)
-
----
-
 #### Series
 - One D labelled array
 - pd.(tab???) this is dot notation
@@ -32,7 +11,6 @@
 - Object means string
 - webster = {"x" : "y",
              "x" : "y"}
-
   pd.Series(webster)
 
 #### Attributes
@@ -55,6 +33,27 @@
 -pd.read_csv()
 -pd.read_csv("pokemon.csv") ~imports dataframes
 pd.read_csv("pokemon.csv", usecols = ["Pokemon"], squeeze = True)
+
+---
+
+#### Dictionary
+- xxx = {"key": yyy,
+          "Key2": yyy
+        }
+- extract xxx("key2")
+
+#### Operators
+- 1 == 1 (gives true/false)
+- 1 != 2 (gives true/false)
+- etc...
+
+#### Function
+- Reusable chunk of code
+- def convert_to_F(CTemp): 
+      product = CTemp * 1.8
+      final = product + 32
+      return = final 
+- To execute convert_to_F(xx)
 
 ---
 
