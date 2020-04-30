@@ -14,11 +14,17 @@
   pd.Series(webster)
 
 #### Attributes
+- Summarise details of a list
 - s = pandas.Series(x)
 - s.(tab??)
 - s.values (no brackets needed)
 - s.index
 - s.dtype
+- pokemon.is_unique (returns true/false)
+- pokemon.ndim
+- pokemon.shape (rows, column(more than 1D))
+- pokemon.size (gives values, counts null values)
+- pokemon.name (can reasign name)
 
 #### Methods
 - Does something to the object
@@ -41,7 +47,80 @@ pd.read_csv("pokemon.csv", usecols = ["Pokemon"], squeeze = True)
 - len(xxx)
 - type(xxx)
 - dir(xxx) ~ gives attributes and methods
-- 
+- sorted(xxx)
+- list(xxx)
+- double click grey area to condense
+- dict(xxx)
+- max(xxx)
+- min(xxx)
+
+#### .sort_values()
+- pokemon.sort_values() ~ alphabetically, brand new series created 
+- pokemon.sort_values().head ~ method chaining
+- pokemon.sort_values(ascending = False).tail 
+- google.sort_values(ascending = False).head(1) ~ googles highest stock price
+
+#### Pythons 'in' keyword
+- x in [x, y, z]
+- Problem; looks at index for in keyword 
+- x in x.values
+
+#### Extract series value by index position
+- pokemon [100, 200, 300]  ~ brand new series from these index
+- pokemon [50:100:2] ~ all from 50 to 99, sets of 2
+- pokemon [-30:]
+
+#### Extract series value by index label
+- pokemon.read_csv("pokemon,csv", index_col = "pokemon", squeeze = True)
+- pokemon.reindex(index = ["x","y"])
+
+#### .get() method
+- pokemon.read_csv("pokemon,csv", index_col = "pokemon", squeeze = True)
+- pokemon.sort_index(inplace = True)
+- pokemon.head(3)
+- pokemon.get(3)
+- pokemon.get("xxx")
+- pokemon.get([0, 5])
+- pokemon.get(["xxx", "yyy"])
+- Wrong index will give nothing, then
+- pokemon.get(key = "zzz", default = "Not in list") ~ even if 1 woption is wrong gives, default 
+
+#### Math method on series object
+- pokemon.count ~ it excludes null values (different from pokemon.len)
+- x.std()
+- x.min()
+- x.max()
+- x.median()
+- x.mode()
+- x.described() ~ stastical summary
+- many other stastical, math and economics methods (on general page)
+
+#### .idmax and .idmin methods
+- index labels with largest and smallest value in series
+- x[x.idmin()]
+
+#### .value_count() method
+- pokemon.value_count() ~ number of times an item occurs
+- pokemon.value_count().sum  
+- pokemon.value_count(ascending = True)
+
+#### .apply() method
+- Calls a function on every single value in the series
+- def classify_performance(number):
+      if number < 300:
+      return "Ok"
+      elif number >= 300:
+      return "satisfactory"
+      else:
+      return "excellent"
+- x.apply(classify_performance)
+- x.apply(lambda stock_price : stock_price + 1) ~ simpler operation than a function
+
+#### .map() method
+- maps values of series to other collection of data
+- x.map(y) ~ x looks for same values in index of y and returns corrosponding value from other series
+- When there are 2 different data types 
+
 
 ---
 
