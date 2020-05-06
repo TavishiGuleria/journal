@@ -1,4 +1,46 @@
 # Journal
+---
+
+`05-05-2020`
+### Data Analysis with Python and Pandas
+#### Intro to Dataframe
+ - 2D data structure, with rows and columns (like a table)
+ - Don't care about rows/columns. Number of reference points to extract a value. 2D because of 2 points of reference
+ - 3D when we have 2 tables and need a data point from one of them
+ - NaN: Not a number  
+ - If column has NaN anywhere. Pnadas converts to floating point (in order to support NaN values)
+
+#### Methods and sttributes shared between series and dataframes
+- Attribute is a piece of data that belongs to an object. Objects internal state. What ot comprises of
+- Method is a command/message to send to an object, ask object to do.
+- Methods - .head(), .tail()
+- Attribute - .index, .values, .shape, .dtype, .dtype.value_count() (method .value_counts on attribute .dtype)
+- Most important (object, attributes, methods)
+- Exclusive attributs/methods for dataframes: .columns, .axes, .info (big picture summary)
+
+#### Differences between shared methods
+- Think about approach a problem. How's the object and how different methods apply
+- If we want to sum horizontally and not vertically: x.sum(axes = 1) or x.sum(axes = "columns")
+- Some work the same as for series some have slight differences
+
+#### Select one column from Dataframe
+- x.(column name case sensitive) ~ for easy column names but doesn't work all the time
+- Bracket syntax to get columns from a dataframe
+- x["Column name"]
+- Single column extracted from dataframe becomes a series
+
+#### Select 2 or more colums from Dataframe
+- X[["a","b"]]
+- When we extract 2 or more columns we always get new dataframe
+- We can switch columns X[["b","a"]]
+
+#### Add neew column to Dataframe
+- X ["a"] = "b" (b is new column) (all values in column are same)
+- X.insert(3, column = "a", value = "b")
+
+#### Broadcasting operations
+
+
 
 --- 
 
@@ -61,6 +103,7 @@ pd.read_csv("pokemon.csv", usecols = ["Pokemon"], squeeze = True)
 - google.sort_values(ascending = False).head(1) ~ googles highest stock price
 
 #### Pythons 'in' keyword
+- permanently modify the objec the method is called on
 - x in [x, y, z]
 - Problem; looks at index for in keyword 
 - x in x.values
@@ -120,7 +163,6 @@ pd.read_csv("pokemon.csv", usecols = ["Pokemon"], squeeze = True)
 - maps values of series to other collection of data
 - x.map(y) ~ x looks for same values in index of y and returns corrosponding value from other series
 - When there are 2 different data types 
-
 
 ---
 
