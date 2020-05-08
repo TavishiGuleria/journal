@@ -1,6 +1,135 @@
 # Journal
 ---
 
+`08-05-2020`
+### Data Analysis with Python and Pandas
+
+#### Filtering Data - Module's dataset and Memory optimization
+`df = pd.read_csv("employees.csv, parse_dates = ["Start Date", "Last Login Time"])
+df["Senior Management"] = df["Senior Management"].astype("bool")
+df["Gender"] = df["Gender"].astype("category")`
+
+- Date type imported as strings, problem when we want to do date time operations. Should tell pandas that we have a date time to do date time operations.
+- df["Start Date"] = pd.to_datetime(df["Start Date"]) ~ 1993-08-06
+- df["Last Login Time"] = pd.to_datetime(["Last Login Time"]) ~ 2020-04-23 12:42:00
+- df["Senior Management"] = df["Senior Management"].astype("bool") ~ to store boolean values
+- Big data and small catagories of values, we can store catagorical instead of string values ~ to reduce size of files
+- df["Gender"] = df["Gender"].astype("caregory") ~ reduces size
+
+#### Filtering based on a condition
+- df["Gender"] == "Male" ~ gives series of boolean
+- df[df["Gender"] == "Male"] ~ gives new dataframe with Male
+- df[df["Salary"] > 1100000]
+- df[df["Start Date"] >= "1985-01-01"]
+
+#### Filtering based on more than one operator
+- mask1 = df["Gender"] == "Male" ~ AND
+  mask2 = df["Team"] == "Marketing"
+  df[mask1 & mask2] 
+
+- mask1 = df["Senior Management"] ~ OR
+  mask2 = df["Start Date"] < "1990-01-01"
+  df[mask1 | mask2]   
+
+- df[mask1 & mask2 | mask3] ~ evaluated left to right
+
+#### .isin method
+- mask = df["Team"].isin(["Legal", "Sales", "Product"]) 
+  df[mask]
+-For a lot of OR needs, multiple values for single series
+
+#### .isnull() and .notnull
+- Boolean series to filter later
+- mask = df["Team"].sinull()
+  df[mask] 
+
+#### .between() method
+- df[df["Salary"].between(60000,70000)]
+- df[df["Last Login Time"].between("0.8:30AM", "12:00PM")]
+
+#### .duplicated() method
+- df.sort_values("First Name", inplace = True)
+- df[df["First Name"].duplicated(keep = False)]  
+- ~df[df["First Name"].duplicated(keep = False)] ~ only reperesented once
+
+#### .drop_duplicates() method
+- df.sort_values("First Name", inplace = True)
+- len(df)
+- df.drop_duplicates() ~ removes rows when all values are identical
+- df.drop_duplicates(subset = ["First Name"], Keep = "first") ~ keeps first 
+- df.drop_duplicates(subset = ["First Name"], Keep = False) ~ removes all duplicates
+- df.drop_duplicates(subset = ["First Name", "Teams"])
+
+#### .unique() and .nunique() methods
+- df["Gender"].unique() ~array with the unique values
+- len(df["Gender"].unique())
+- df["Gender"].nunique() ~ gives number of unique values excluding null values
+- df["Gender"].nunique(dropna = False)
+
+---
+
+`07-05-2020`
+### Data Analysis with Python and Pandas
+
+#### What is inplace()?
+
+#### Broadcasting operations
+- Like .apply(), to apply commands on the values of series not the whole series
+- X.["a"].add(5) or X.["a"] + 5
+- Will work with null values
+- Same for all math operators
+- X.["a"].mul(5) or X.["aa"] = X.["a"] * 5
+
+#### Review .value_counts() method
+- X["a"].value_counts(): frequency of a
+
+#### Drop rows and null values
+- Deal with NaN values
+- X.dropna() ~ removes rows with any NaN values
+- X.dropna(how = "all") ~ removes rows with all NaN values
+- X.dropna(how = "all", inplace = "True")
+- X.dropna(axis = 1) or X.dropna(axis = "columns") ~ removes columns with NaN
+- X.dropna(subset = ["a", "b"]) ~ removes specific rows with NaN
+
+#### .fillna() method
+- X.fillna() ~ replace every NaN value
+- Works better with similar data types
+- X["X"].fillna(0, inplace = True) ~ replaces NaN at specific data type
+- inplace() is important
+
+#### .astype() method
+- convert data types into each other
+- Important to not have NaN values
+- nba = pd.read_csv("nba.csv").dropna(how = "all")
+  nba["Salary"].fillna(0, inplace = True)
+  nba["College"].fillna("None"), inplace = True)
+  nba.head(6)
+  nba.dtypes (or nba.info() which is better)
+  nba["Salary"] = nba["Salary"].astype("int")
+  nba["Number"].astype("int")
+
+~ Catagory (unique to pandas) ~ for duplicate values to decrease load
+  nba["Position"].nunique().astype("category") ~ saves memory
+
+#### .sort_values() method for dataframes
+  - X.sort_values("a", ascending =True) ~ sorts value by a
+  - X.sort_values("a", ascending =True, inplace = True) ~ overwrites the original dataframe
+  - Puts NaN in the end
+  - nba.sort_values("Salary", naposition = "first") ~ puts NaN first
+  - nba.sort_values(["Team", "Name"]) ~ sorts for 2 columns
+  - nba.sort_values(["Team", "Name"], ascending =[True, False], inplace = True) ~ ascention of columns to sort
+  
+#### .sort_index() method
+- nba.sort_index(ascending = True) ~ sorting by index
+
+#### .rank() method
+- nba = pd.read_csv("nba.csv").dropna(how ="all")
+- nba["Salary"] = nba["Salary"].fillna(0).astype("int")
+- nba["Salary Rank"] = nba["Salary"].rank(ascending = True).astype("int") ~ gives a rank for the Salary values
+- nba.sort_values(by = "Salary", ascending = False) ~ same as rank
+
+---
+
 `05-05-2020`
 ### Data Analysis with Python and Pandas
 #### Intro to Dataframe
@@ -37,10 +166,6 @@
 #### Add neew column to Dataframe
 - X ["a"] = "b" (b is new column) (all values in column are same)
 - X.insert(3, column = "a", value = "b")
-
-#### Broadcasting operations
-
-
 
 --- 
 
