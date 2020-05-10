@@ -1,9 +1,140 @@
 # Journal
 ---
 
+`10-05-2020`
+### Data Analysis with Python and Pandas
+#### set_index and reset_index methods
+- bond = pd.read_csv("jamesbond.csv")
+  bond.set_index(keys = "Films". implace = True) ~ index in bold/ replacs presious index dataframe
+  Bond.reset_index(drop = False) ~ to reset 
+- bond.reset_index(inplace = True)
+  bond.set_index("Year", inplace = True) ~ these 2 store in reset 
+
+#### Retrieve rows by index label with .loc[] accessor
+- Get in the habbit of sorting, easier for pandas 
+- bond = pd.read_csv("jamesbond.csv", index_col = "Film")
+  bond.sort_index(inplace = True)
+  bond.loc["Goldfinger"] ~ copies values in series
+  bond.loc["a":"b":2] ~ copies values in between
+-  Gives error if not in list, can check with "a" in bond.index (Gives False/True)
+
+#### Retrieve rows by index label with iloc[] accessor
+- bond.iloc[15, 20 ]
+
+#### Second arguments to loc and iloc accesors
+- bond.loc["Moonraker", "Actor"] ~ gives actor
+- bond.loc["Moonraker"["Director", "Actor"]] ~ gives dataframe of director & Actor
+- bond.iloc[14, 2:5]
+
+#### Set new value for specific cell or cells in a row
+- bond.loc["Dr.No", "Actor"] = "xxx" ~ changes actor name in row 
+- bond.loc["Dr.No", ["a", "b","c"]] = ["x","y","z"]
+- Integers are changed to floating point numbers
+
+#### Set multiple values in dataframe
+- Introduce boolean series to filter
+- Act = bond["Actor"] == "Sean Connery"
+  bond.loc[act, "Actor"] = "a" ~ not a copy a subset (.loc references rows)
+  bond
+
+#### Rename index labels or columns
+- bond.rename(mapper = {"Goldeneye": "Golden Eye"}, axis = 0/"rows"/"index")
+- bond.rename(index = {"Goldeneye": "Golden Eye"})
+- Same works for columns 
+- bond.columns = ["a","b"]
+  bond
+
+#### Delete rows or columns from dataframe
+- bond.drop(["a","b"], inplace = True) ~ in rows
+- bond.drop(labels = ["Box office", "b"], axis = "Columns") ~ in columns
+- act = bond.pop("Actor") ~ removed permanantly
+- del bond["Director"]
+
+#### Create random sample
+- bond.sample() ~ returns a single random row
+- bond.sample(n = 5)
+- bond.sample(frac = 0.25, axis ="index")
+
+#### .nsmallest() and nlargest() method
+- bond.nlargest(3, columns = "box office")
+- bond.nlargest(n = 2, columns = "box office")
+- bond["box office"].nlargest(8)
+
+#### .where method
+- bond.where(mask) ~ others null
+- bond.where(bond[:box office]> 800)
+
+#### .query method
+- Doesn't work with spaces in columns
+- [column_name.replace(" ","_") for column_name in bond.columns]
+- bond.query('Actor == "Sean Connery"')
+- != et and in etc are valid
+
+#### .apply() method on single columns
+- def convert(number):
+      return str(number) + "millions"
+
+  bond["Box Office"] = bond["Box Office"].apply(convert)
+- columns = ["Box Office", "Budget"]
+  for col in columns:
+      bond[col] = bond[col].apply(convert)
+
+#### .apply() method on rows
+- def good_movie(row):
+      actor = row[1]
+      budget = row[4]
+
+      if actor == "a"
+         return "b"
+      elif actor =="c" and budget > 40:
+         return "d"
+      else:
+         return "e"
+  bond.apply(good_movie, axis ="columns")
+
+#### .copy method
+- makes copy but saves it differently in memory
+- bond["Directory"].copy()
+
+#### Working with broken text data
+- white spaces, multiple values etc.
+- check .nuniques, make categories for lesser values by .astype 
+
+#### Common string methods .lower(), .upper, .title, .len()
+- chicago["Name"].str.lower()
+
+#### .str.replace() method
+- "xxx" replace("x", "!")
+- chicago["Department"] = chicago["Deprtment"].str.replace("MGMNT","Management")
+- chicago["Salary"].str.replaced("$", "").astype(float)
+
+#### Filtering with string method
+- .dropna(how = "all")
+- chicago["a"].str.lower().str.contains("water")
+- chicago["a"].str.lower().str.startswith("water")
+- chicago["a"].str.lower().str.endswith("ist")
+
+#### .strip(), .lstrip(), rstrip()
+- removes spaces
+- chicago["Name"].str.rstrip().str.lstrip()
+
+#### String methods on Index and columns
+- index_col = "Name"
+- chicago.index = chicago.index.str.strip().str.title()
+- chicago.columns = chicago.columns.str.upper()
+
+#### .str.split() method
+- chicago["Name"].str.split(",").str.get(0).str.title().value_counts() ~ gives list
+- .get() gives back the first one before the comma in the list 
+- can join many methods 
+- expand and n parameters of .str.split() method
+- chicago[["First Name", "Last Name"]] = chicago["Name"].str.split(",", expand = True)
+- chicago["Name"].str.split(",", expand = True, n = 1)
+ 
+---
+
 `08-05-2020`
 ### Data Analysis with Python and Pandas
-
 #### Filtering Data - Module's dataset and Memory optimization
 `df = pd.read_csv("employees.csv, parse_dates = ["Start Date", "Last Login Time"])
 df["Senior Management"] = df["Senior Management"].astype("bool")
