@@ -1,5 +1,82 @@
 # Journal
 ---
+`10-05-2020`
+### Data Analysis with Python and Pandas
+#### Intro to multiindex module
+- Initial syntax
+- store values in date type column
+
+#### Mulitindex with set_index method
+- bigmac.set_index(keys = ["Date", "Country"])
+- bigmac.set_index() ~ sorted in sequence in ascending order
+- bigmac.index.names ~ gives the ordered index names
+- type(bigmac.index) ~ multi index object
+- tuple ia a data structure consisting of multiple parts
+
+#### Mulitindex with get_level_value method
+- bigmac = pd.read_csv("bigmac.csv", parse_dates = ["Date"], index_col = ["Date", "Country"])
+- bigmac.index.get_level_values("Date") ~ gives a date time index
+
+#### Change Index Level names with set_names Method
+- bigmac.index.set_names(names = ["Day", "Location"])
+- bigmac.index.set_names(names = "Date, level = 0 or Day")
+
+#### sort_index on multiindex dataframe
+- bigmac.sort_index()
+- bigmac.sort_index(ascending =[False, True]) ~ each level/Column sorted 
+- bigmac.sort_index(level = "Country", ascending = False) ~ another syntax
+
+#### Extract rows from multiindex dataframes
+- bogmac.loc[("2020-01-01", Argentina), 'Price in USD'] ~ first rows second columns
+- Im .loc[] first argument rows and second columns
+
+#### Transpose
+- Swaps indices, rows and columns
+- bigmac.transpose() ~ doesn't mutate, needs to be assigned
+-
+#### swaplevel method
+- bigmac.swaplevel() ~ only 2 levels
+- bigmac.swaplevel("Date", "Country") ~ swaps index position
+- bigmac.swaplevel("1", "0")
+
+#### .stack() method
+- index_cols calls by rows
+- world.stack() ~ doubled rows and half columns
+- world.stack().to_frame() ~ frames it
+- s.unstack().unstack()
+
+#### .unstack() method
+- s.unstack() ~ goes to last layer (last row in all rows) and makes column
+- everything is numbereed and starts counting at 0
+- s.unstack(2)
+- s.unstack(-1) ~ exchanges from back row
+- s.unstack("year")
+- Migrating more than one row to column
+- s.unstack(level = [1,0])
+- s.unstack("year", fill_value = 0) ~ changes null values to 0
+
+#### The pivot method
+- Reorient a dataset
+- Take values in column and convert to column headers
+- sales.pivot(index ="Date", column = "Salesman", value = "Revenue")
+
+#### The pivot_table() method
+- Aggregating values as a whole, grouoing and sections
+- foods.pivot_table(values = "Spend", index ="Gender", aggfunc = "mean")
+- foods.pivot_table(values = "Spend", index ="Gender", aggfunc = "sum")
+- foods.pivot_table(values = "Spend", index ="Item", aggfunc = "mean")
+- foods.pivot_table(values = "Spend", index =["Gender", "Item], columns = "City" aggfunc = "mean")
+- foods.pivot_table(values = "Spend", index =["Gender", "Item], columns = ["City", "Frequency"] aggfunc = "mean")
+- aggfunc ~ count, max, min
+
+#### The pd.melt() method
+- Reverse of pivot, converted aggregated data set to tabular format
+- pd.melt(sales, id_vars = "salesman") ~ keeps column and gives variable and value column from rows
+- pd.melt(sales, id_vars = "salesman", var_name = "Quarter", value_name = "Revenue") 
+
+#### 
+
+---
 
 `10-05-2020`
 ### Data Analysis with Python and Pandas
