@@ -1,5 +1,228 @@
 # Journal
 ---
+### Markdown Cheatsheet
+[Knock yourself out](https://www.markdownguide.org/cheat-sheet/)
+---
+
+`02-02-2021`
+### Python Syntax
+
+#### Range and indices (my example)
+```
+def tav(a):
+b = [0] * len(a)
+for i in range(0, len(a)):
+    if i == 0:
+        b[i] = logic
+        else:
+            b[i] = logic  
+                elseif i ==(len(a) - 1):
+return (b)
+
+```
+
+#### For loop
+```
+# Prints out 3,5,7
+for x in range(3, 8, 2):
+    print(x)
+```
+
+#### While loop
+```
+# Prints out 0,1,2,3,4
+
+count = 0
+while count < 5:
+    print(count)
+    count += 1  # This is the same as count = count + 1
+```
+
+#### Break and continue statement
+```
+# Prints out 0,1,2,3,4
+# break exits a for/while loop; continue skips block and returns to for/while loop
+
+count = 0
+while True:
+    print(count)
+    count += 1
+    if count >= 5:
+        break
+
+# Prints out only odd numbers - 1,3,5,7,9
+for x in range(10):
+    # Check if x is even
+    if x % 2 == 0:
+        continue
+    print(x)
+```
+
+#### Else
+```
+# Prints out 0,1,2,3,4 and then it prints "count value reached 5"
+
+count=0
+while(count<5):
+    print(count)
+    count +=1
+else:
+    print("count value reached %d" %(count))
+
+# Prints out 1,2,3,4
+for i in range(1, 10):
+    if(i%5==0):
+        break
+    print(i)
+else:
+    print("this is not printed because for loop is terminated because of break but not due to fail in condition")
+```
+
+#### Function
+```
+# Define our 3 functions
+def my_function():
+    print("Hello From My Function!")
+
+def my_function_with_args(username, greeting):
+    print("Hello, %s, From My Function!, I wish you %s"%(username, greeting))
+
+def sum_two_numbers(a, b):
+    return a + b
+
+# print(a simple greeting)
+my_function()
+
+#prints - "Hello, John Doe, From My Function!, I wish you a great year!"
+my_function_with_args("John Doe", "a great year!")
+
+# after this line x will hold the value 3!
+x = sum_two_numbers(1,2)
+```
+
+#### Classes and Objects
+```
+# define the Vehicle class
+class Vehicle:
+    name = ""
+    kind = "car"
+    color = ""
+    value = 100.00
+    def description(self):
+        desc_str = "%s is a %s %s worth $%.2f." % (self.name, self.color, self.kind, self.value)
+        return desc_str
+
+# your code goes here
+car1 = Vehicle()
+car1.name = "Fer"
+car1.color = "red"
+car1.kind = "convertible"
+car1.value = 60000.00
+
+car2 = Vehicle()
+car2.name = "Jump"
+car2.color = "blue"
+car2.kind = "van"
+car2.value = 10000.00
+```
+
+#### Dictionaries
+```
+phonebook = {  
+    "John" : 938477566,
+    "Jack" : 938377264,
+    "Jill" : 947662781
+}  
+
+# your code goes here
+phonebook["Jake"] = 938273443  
+del phonebook["Jill"]  
+
+# testing code
+if "Jake" in phonebook:  
+    print("Jake is listed in the phonebook.")
+    
+if "Jill" not in phonebook:      
+    print("Jill is not listed in the phonebook.")
+```
+
+#### Modules and packages
+```
+import re
+
+# Your code goes here
+find_members = []
+for member in dir(re):
+    if "find" in member:
+        find_members.append(member)
+
+print(sorted(find_members))
+```
+
+```
+# game.py
+# import the draw module
+from draw import draw_game
+
+def main():
+    result = play_game()
+    draw_game(result)
+```
+
+```
+# game.py
+# import the draw module
+from draw import *
+
+def main():
+    result = play_game()
+    draw_game(result)
+```
+
+```
+# game.py
+# import the draw module
+if visual_mode:
+    # in visual mode, we draw using graphics
+    import draw_visual as draw
+else:
+    # in textual mode, we print out text
+    import draw_textual as draw
+
+def main():
+    result = play_game()
+    # this can either be visual or textual depending on visual_mode
+    draw.draw_game(result)
+```
+
+- when we import everything runs
+```
+# if we have a.py and b.py
+# in a.py
+ if __name__ == "__init__":)
+     def z():
+     print ("xyz")
+
+# in b.py, now when we import it doesn't run everything
+import a
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+---
 `10-05-2020`
 ### Data Analysis with Python and Pandas
 #### Intro to multiindex module
