@@ -1,6 +1,7 @@
 # Journal
 ---
 ### Markdown Cheatsheet
+
 [Knock yourself out](https://www.markdownguide.org/cheat-sheet/)
 ---
 
