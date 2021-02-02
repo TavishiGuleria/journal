@@ -208,8 +208,58 @@ def main():
 import a
 ```
 
+#### Example 1 (class with max, min etc.)
+```
+class Cars:
+    model = ""
+    price = 0
 
+allcars = []
+for m in range(0,100):
+    car1 = Cars()
+    car1.model = "Ford" + str(m)
+    car1.price = 200 * m + 5
+    allcars.append(car1)
+for car in allcars:
+    print (car.model, car.price) 
 
+ def mostexp(ac):
+    exp = ac[0]
+    for i in range(0, len(ac)):
+        car = ac[i]
+        if car.price > exp.price:
+            exp = car
+    return(exp)
+
+a = mostexp(allcars)
+print(a.model, a.price)
+```
+
+#### Numpy Arrays
+```
+# Create 2 new lists height and weight
+height = [1.87,  1.87, 1.82, 1.91, 1.90, 1.85]
+weight = [81.65, 97.52, 95.25, 92.98, 86.18, 88.45]
+
+# Import the numpy package as np
+import numpy as np
+
+# Create 2 numpy arrays from height and weight
+np_height = np.array(height)
+np_weight = np.array(weight)
+
+# Calculate bmi - element wise calculations
+bmi = np_weight / np_height ** 2
+
+# Print the result
+print(bmi)
+
+# For a boolean response - for subsetting
+bmi > 23
+
+# Print only those observations above 23
+bmi[bmi > 23]
+```
 
 
 
