@@ -8,8 +8,12 @@
 `02-02-2021`
 ### Python Syntax
 
+#### Keep revising essence!!!!!!!!!!!
+
 #### Range and indices (my example)
 ```
+range(5) == range(0,5) == range(0,5,1) == range(5,0,-1) # end point is not included
+
 def tav(a):
 b = [0] * len(a)
 for i in range(0, len(a)):
@@ -27,6 +31,15 @@ return (b)
 # Prints out 3,5,7
 for x in range(3, 8, 2):
     print(x)
+```
+```
+def char(a):
+    for i in range(1,6):
+        print(i * a)
+    for j in range(6,0,-1):
+        print(j * a)
+        
+char("XOXO")
 ```
 
 #### While loop
@@ -235,7 +248,7 @@ a = mostexp(allcars)
 print(a.model, a.price)
 ```
 
-#### Numpy Arrays
+#### Numpy Arrays (for matrix calculations)
 ```
 # Create 2 new lists height and weight
 height = [1.87,  1.87, 1.82, 1.91, 1.90, 1.85]
@@ -260,14 +273,32 @@ bmi > 23
 # Print only those observations above 23
 bmi[bmi > 23]
 ```
+- dir -  gives in built methods
+- np.shape
+- np.transpose()
 
+#### 2D Arrays - nested lists
+```
+a = [1,2,3,4,5]
+b = [10,11,12,13]
+c = [a,b]
+total = 1
+for i in c:
+    for j in i:
+        total = total * j
+total
 
-
-
-
-
-
-
+total = 0
+for i in c:
+    total = 0
+    for j in i:
+        total = total + j
+    print(total)
+```
+```
+for i in range(1,6):
+    print(i * "*")
+```
 
 
 
