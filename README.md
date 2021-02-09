@@ -301,6 +301,166 @@ for i in range(1,6):
 ```
 
 
+#### Pandas basics
+- Key data structure is called the DataFrame. DataFrames allow you to store and manipulate tabular data in rows of observations and columns of variables.
+- Based on numpy package
+
+- Many ways to create DataFrames
+```
+# by using dictionaries
+dict = {"country": ["Brazil", "Russia", "India", "China", "South Africa"],
+       "capital": ["Brasilia", "Moscow", "New Dehli", "Beijing", "Pretoria"],
+       "area": [8.516, 17.10, 3.286, 9.597, 1.221],
+       "population": [200.4, 143.5, 1252, 1357, 52.98] }
+
+import pandas as pd
+brics = pd.DataFrame(dict)
+print(brics)
+
+output:
+     area    capital       country  population  # 0 -4 are default keys
+0   8.516   Brasilia        Brazil      200.40
+1  17.100     Moscow        Russia      143.50
+2   3.286  New Dehli         India     1252.00
+3   9.597    Beijing         China     1357.00
+4   1.221   Pretoria  South Africa       52.98
+```
+```
+# Set the index for brics
+brics.index = ["BR", "RU", "IN", "CH", "SA"]
+
+# Print out brics with new index values
+print(brics)
+```
+
+```
+# Importing csv files using pandas
+# Import pandas as pd
+import pandas as pd
+
+# Import the cars.csv data: cars
+cars = pd.read_csv('cars.csv')
+
+# Print out cars
+print(cars)
+```
+
+#### Indexing DataFrames
+```
+# Import pandas and cars.csv
+import pandas as pd
+cars = pd.read_csv('cars.csv', index_col = 0)
+
+# Print out country column as Pandas Series
+print(cars['cars_per_cap'])
+
+# Print out country column as Pandas DataFrame
+print(cars[['cars_per_cap']])
+
+# Print out DataFrame with country and drives_right columns
+print(cars[['cars_per_cap', 'country']])
+
+# Print out first 4 observations
+print(cars[0:4])
+
+# Print out fifth and sixth observation
+print(cars[4:6])
+
+Output:
+US     809
+    AUS    731
+    JAP    588
+    IN      18
+    RU     200
+    MOR     70
+    EG      45
+    Name: cars_per_cap, dtype: int64
+         cars_per_cap
+    US            809
+    AUS           731
+    JAP           588
+    IN             18
+    RU            200
+    MOR            70
+    EG             45
+         cars_per_cap        country
+    US            809  United States
+    AUS           731      Australia
+    JAP           588          Japan
+    IN             18          India
+    RU            200         Russia
+    MOR            70        Morocco
+    EG             45          Egypt
+            cars_per_cap        country drives_right
+    US            809  United States         True
+    AUS           731      Australia        False
+    JAP           588          Japan        False
+    IN             18          India        False
+         cars_per_cap  country drives_right
+    RU            200   Russia         True
+    MOR            70  Morocco         True
+
+```
+
+#### loc and iloc
+```
+# Print out observation for Japan
+print(cars.iloc[2])
+
+# Print out observations for Australia and Egypt
+print(cars.loc[['AUS', 'EG']])
+
+output:
+cars_per_cap      588
+    country         Japan
+    drives_right    False
+    Name: JAP, dtype: object
+         cars_per_cap    country drives_right
+    AUS           731  Australia        False
+    EG             45      Egypt         True
+```
+
+---
+`09-02-2021`
+### Introduction - Data Analysis and Data Science with Python and Pandas
+####Starting up
+- !pip install pandas matplotlib - same as running in cmd prompt
+- [pandas docs link](https://pandas.pydata.org/docs/reference/index.html#api)
+- Can use pandas just to convert files from one type to another (SQL to JSON)
+- For datasets [Kaggle](https://www.kaggle.com/#) - kernels, competitions
+- Kaggle competitions (notebooks) and courses
+- Save csv's at the cmd prompt path before Jupyter Notebooks
+
+#### [Avocados.csv](https://www.youtube.com/watch?v=nLw1RNvfElg&list=PLQVvvaa0QuDfSfqQuee6K8opKtZsh7sA9)
+```
+import pandas as pd
+df = pd.read_csv("avocado.csv")
+df.head()
+df["AveragePrice"].head()
+albany_df = df[df['region'] == "Albany"]
+albany_df.head()
+albany_df.plot()
+albany_df.columns
+albany_df["year"].plot()
+albany_df.set_index("year", inplace=True)
+albany_df["AveragePrice"].plot()
+```
+
+#### [Kaggle course](https://www.kaggle.com/learn/pandas)
+- index_col=0
+```
+wine_reviews = pd.read_csv("../input/wine-reviews/winemag-data-130k-v2.csv", index_col=0)
+wine_reviews.head()
+```
+
+- shape()
+```
+wine_reviews.shape
+```
+
+
+
+
 
 
 
