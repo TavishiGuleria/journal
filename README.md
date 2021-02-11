@@ -422,7 +422,7 @@ cars_per_cap      588
 
 ---
 `09-02-2021`
-### Introduction - Data Analysis and Data Science with Python and Pandas
+### Introduction - Data Analysis and Data Science with Python and Pandas by Sentdex
 ####Starting up
 - !pip install pandas matplotlib - same as running in cmd prompt
 - [pandas docs link](https://pandas.pydata.org/docs/reference/index.html#api)
@@ -431,7 +431,7 @@ cars_per_cap      588
 - Kaggle competitions (notebooks) and courses
 - Save csv's at the cmd prompt path before Jupyter Notebooks
 
-#### [Avocados.csv](https://www.youtube.com/watch?v=nLw1RNvfElg&list=PLQVvvaa0QuDfSfqQuee6K8opKtZsh7sA9)
+##### [Avocados.csv](https://www.youtube.com/watch?v=nLw1RNvfElg&list=PLQVvvaa0QuDfSfqQuee6K8opKtZsh7sA9)
 ```
 import pandas as pd
 df = pd.read_csv("avocado.csv")
@@ -446,19 +446,75 @@ albany_df.set_index("year", inplace=True)
 albany_df["AveragePrice"].plot()
 ```
 
-#### [Kaggle course](https://www.kaggle.com/learn/pandas)
+##### [Kaggle course](https://www.kaggle.com/learn/pandas)
 - index_col=0
 ```
 wine_reviews = pd.read_csv("../input/wine-reviews/winemag-data-130k-v2.csv", index_col=0)
 wine_reviews.head()
 ```
-
 - shape()
 ```
 wine_reviews.shape
 ```
 
+#### Graphing/visualization
+- To make panda understand dates for a graph
+```
+# for plotting all regions vs date in one graph
+import pandas as pd
+df = pd.read_csv("avocado.csv")
+df['Date'] = pd.to_datetime(df["Date"])
+albany_df.sort_index(inplace = True)
+albany_df["AveragePrice"].rolling(25).mean().plot()
+df["region"].unique()
 
+albany_df = df.copy()[df["region"] == "Albany"]
+albany_df.set_index("Date", inplace = True)
+albany_df.sort_index(inplace = True)
+albany_rm = albany_df["AveragePrice"].rolling(25).mean()
+albany_rm
+
+df["region"].unique()
+graph_df = pd.DataFrame()
+df = df.copy()[df["type"]=="organic"]
+df.sort_values(by = "Date", ascending = True, inplace = True)
+
+for region in df["region"].unique()[:5]:
+    print(region)
+    region_df = df.copy()[df["region"] == region]
+    region_df.set_index("Date", inplace = True)
+    region_df.sort_index(inplace = True)
+    region_df["%s_25rm" %region] = region_df['AveragePrice'].rolling(25).mean()
+    
+    if graph_df.empty:
+        graph_df = region_df[["%s_25rm" %region]]
+        
+    else:
+        graph_df = graph_df.join(region_df["%s_25rm" %region]) 
+
+graph_df.dropna().plot()
+
+def rmplotter(rm):
+    global df
+    graph_df = pd.DataFrame()
+    df = df.copy()[df["type"]=="organic"]
+    df.sort_values(by = "Date", ascending = True, inplace = True)
+    for region in df["region"].unique()[:5]:
+        print(region)
+        region_df = df.copy()[df["region"] == region]
+        region_df.set_index("Date", inplace = True)
+        region_df.sort_index(inplace = True)
+        region_df["%s_25rm" %region] = region_df['AveragePrice'].rolling(rm).mean()
+    
+        if graph_df.empty:
+            graph_df = region_df[["%s_25rm" %region]]
+        
+        else:
+            graph_df = graph_df.join(region_df["%s_25rm" %region]) 
+    graph_df.dropna().plot()
+
+rmplotter(5)
+```
 
 
 
